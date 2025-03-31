@@ -27,6 +27,15 @@ on:
       NODE_VERSION:
         required: true
         type: string
+    secrets:
+      GH_PAT:
+        required: false
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+      AWS_ACCESS_KEY_ID:
+        required: true
+      SERVERLESS_ACCESS_KEY:
+        required: true
 
 jobs:
   deploy:
