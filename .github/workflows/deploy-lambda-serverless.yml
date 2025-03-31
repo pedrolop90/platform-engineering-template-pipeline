@@ -1,9 +1,6 @@
 name: Deploy Lambda with Serverless
 
 on:
-  push:
-    branches:
-      - main 
   workflow_call:
     inputs:
       ENVIRONMENT:
