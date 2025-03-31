@@ -94,7 +94,7 @@ jobs:
       #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: 🔄 Update Lambda with new source
+      - name: 🔄 Update Lambda with new source 2
         uses: rotarydialer/update-lambda-s3@main
         env:
           LAMBDA_NAME: ${{ inputs.LAMBDA_FUNCTION_NAME }}
