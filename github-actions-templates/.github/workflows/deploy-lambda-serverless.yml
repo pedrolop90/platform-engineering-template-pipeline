@@ -6,6 +6,9 @@ on:
       - main 
   workflow_call:
     inputs:
+      ENVIRONMENT:
+        required: false  # 👈 Opcional, si no se pasa, no habrá environment
+        type: string
       S3_BUCKET_NAME:
         required: true
         type: string
