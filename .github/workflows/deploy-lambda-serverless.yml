@@ -36,6 +36,8 @@ on:
         required: true
       SERVERLESS_ACCESS_KEY:
         required: true
+      FILE_ENVIRONMENTS:
+        required: true
 
 jobs:
   deploy:
@@ -45,6 +47,9 @@ jobs:
       - name: 📥 Checkout repository
         uses: actions/checkout@v3
 
+      - name: show variables
+        run: env
+
       - name: 📦 Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -52,6 +57,9 @@ jobs:
 
       - name: 📌 Install dependencies
         run: npm install
+
+      - name: archivo de variables de entorno
+        run: echo "${{ secrets.FILE_ENVIRONMENTS }}" | base64 --decode > .env
 
       - name: serverless package
         uses: serverless/github-action@v3.2
