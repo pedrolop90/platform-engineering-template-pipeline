@@ -4,19 +4,42 @@ on:
   push:
     branches:
       - main 
+  workflow_call:
+    inputs:
+      S3_BUCKET_NAME:
+        required: true
+        type: string
+      LAMBDA_FUNCTION_NAME:
+        required: true
+        type: string
+      PACKAGE_PATH:
+        required: true
+        type: string
+      S3_DEPLOY_PATH:
+        required: true
+        type: string
+      NAME_BINARY:
+        required: true
+        type: string
+      AWS_REGION:
+        required: true
+        type: string
+      NODE_VERSION:
+        required: true
+        type: string
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: develop
     env:
-      S3_BUCKET_NAME: ${{ vars.S3_BUCKET_NAME }}  
-      LAMBDA_FUNCTION_NAME: ${{ vars.LAMBDA_FUNCTION_NAME }}  
-      PACKAGE_PATH: ${{ vars.PACKAGE_PATH }} 
-      S3_DEPLOY_PATH: ${{ vars.S3_DEPLOY_PATH }}
-      NAME_BINARY: ${{ vars.NAME_BINARY }}
-      AWS_REGION: ${{ vars.AWS_REGION }}
-      NODE_VERSION: ${{ vars.NODE_VERSION }} 
+      S3_BUCKET_NAME: ${{ inputs.S3_BUCKET_NAME }}  
+      LAMBDA_FUNCTION_NAME: ${{ inputs.LAMBDA_FUNCTION_NAME }}  
+      PACKAGE_PATH: ${{ inputs.PACKAGE_PATH }} 
+      S3_DEPLOY_PATH: ${{ inputs.S3_DEPLOY_PATH }}
+      NAME_BINARY: ${{ inputs.NAME_BINARY }}
+      AWS_REGION: ${{ inputs.AWS_REGION }}
+      NODE_VERSION: ${{ inputs.NODE_VERSION }} 
     
 
     steps:
