@@ -85,11 +85,11 @@ jobs:
 
       - name: 🔄 Update Lambda with new source
         run: |
+          aws configure set region ${{ inputs.AWS_REGION }}
           aws lambda update-function-code \
             --function-name ${{ inputs.LAMBDA_FUNCTION_NAME }} \
             --s3-bucket ${{ inputs.S3_BUCKET_NAME }} \
             --s3-key ${{ inputs.S3_DEPLOY_PATH }}/${{ inputs.LAMBDA_FUNCTION_NAME }}.zip
-            --region ${{ inputs.AWS_REGION }}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
