@@ -48,7 +48,15 @@ jobs:
         uses: actions/checkout@v3
 
       - name: show variables
-        run: env
+        run: |
+          echo "ENVIRONMENT=${{ inputs.ENVIRONMENT }}"
+          echo "S3_BUCKET_NAME=${{ inputs.S3_BUCKET_NAME }}"
+          echo "LAMBDA_FUNCTION_NAME=${{ inputs.LAMBDA_FUNCTION_NAME }}"
+          echo "PACKAGE_PATH=${{ inputs.PACKAGE_PATH }}"
+          echo "S3_DEPLOY_PATH=${{ inputs.S3_DEPLOY_PATH }}"
+          echo "NAME_BINARY=${{ inputs.NAME_BINARY }}"
+          echo "AWS_REGION=${{ inputs.AWS_REGION }}"
+          echo "NODE_VERSION=${{ inputs.NODE_VERSION }}"
 
       - name: 📦 Setup Node.js
         uses: actions/setup-node@v3
